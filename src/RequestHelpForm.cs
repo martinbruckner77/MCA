@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2009-2022 Intel Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -58,6 +58,16 @@ namespace MeshAssistant
         private void RequestHelpForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             parent.requestHelpForm = null;
+        }
+
+        public void UpdateInfo()
+        {
+            mainListView.Items.Clear();
+            requestHelpButton.Visible = false;
+
+            if ((parent.mcagent != null) && (parent.currentAgentName != null) && (parent.currentAgentName.Equals("~")))
+            {
+            }
         }
     }
 }
