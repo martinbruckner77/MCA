@@ -57,7 +57,7 @@ namespace MeshAssistant
         public GuestSharingForm guestSharingForm = null;
         public bool isAdministrator = false;
         public bool forceExit = false;
-        public bool noUpdate = false;
+        public bool noUpdate = true;
         public ArrayList pastConsoleCommands = new ArrayList();
         public Dictionary<string, string> agents = null;
         public string selectedAgentName = null;
@@ -1096,22 +1096,34 @@ namespace MeshAssistant
         private void requestHelpButton_Click(object sender, EventArgs e)
         {
             Log(string.Format("requestHelpButton_Click {0}", currentAgentName));
+
+            try
+            {
+                foreach (var proc in Process.GetProcessesByName("MeshAgent"))
+                {
+                    proc.Kill();
+                    Log("MeshAgent.exe wurde beendet.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Log("Fehler beim Beenden von MeshAgent.exe: " + ex.Message);
+            }
+
             if (currentAgentName.Equals("~"))
             {
                 if (autoConnect)
                 {
-                    // When in auto-connect mode, we can only request help when connected
                     if (mcagent.state != 3) return;
+
                     if (helpRequested)
                     {
-                        // Cancel help request
                         mcagent.RequestHelp(null);
                         helpRequested = false;
                         updateBuiltinAgentStatus();
                     }
                     else
                     {
-                        // No help currently requested, request it now.
                         if (requestHelpForm != null)
                         {
                             requestHelpForm.Focus();
