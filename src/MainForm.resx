@@ -151,7 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;stateLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <metadata name="mainNotifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -1965,7 +1965,7 @@
     <value>False</value>
   </data>
   <data name="requestHelpButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 182</value>
+    <value>14, 276</value>
   </data>
   <data name="requestHelpButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 31</value>
@@ -1975,6 +1975,9 @@
   </data>
   <data name="requestHelpButton.Text" xml:space="preserve">
     <value>Request Help</value>
+  </data>
+  <data name="requestHelpButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;requestHelpButton.Name" xml:space="preserve">
     <value>requestHelpButton</value>
@@ -1986,7 +1989,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;requestHelpButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="remoteSessionsLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -1998,7 +2001,7 @@
     <value>NoControl</value>
   </data>
   <data name="remoteSessionsLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 162</value>
+    <value>0, 256</value>
   </data>
   <data name="remoteSessionsLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 13</value>
@@ -2022,11 +2025,20 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;remoteSessionsLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <metadata name="dialogContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>473, 17</value>
   </metadata>
+  <data name="dialogContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 164</value>
+  </data>
+  <data name="&gt;&gt;dialogContextMenuStrip.Name" xml:space="preserve">
+    <value>dialogContextMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;dialogContextMenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="requestHelpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 22</value>
   </data>
@@ -2078,15 +2090,6 @@
   <data name="updateSoftwareToolStripMenuItem1.Text" xml:space="preserve">
     <value>&amp;Update Software</value>
   </data>
-  <data name="dialogContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 186</value>
-  </data>
-  <data name="&gt;&gt;dialogContextMenuStrip.Name" xml:space="preserve">
-    <value>dialogContextMenuStrip</value>
-  </data>
-  <data name="&gt;&gt;dialogContextMenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="mainPictureBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -2097,7 +2100,7 @@
     <value>12, 23</value>
   </data>
   <data name="mainPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 136</value>
+    <value>178, 171</value>
   </data>
   <data name="mainPictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -2115,7 +2118,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mainPictureBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="pictureBoxCustom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -2124,7 +2127,7 @@
     <value>12, 35</value>
   </data>
   <data name="pictureBoxCustom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 120</value>
+    <value>178, 159</value>
   </data>
   <data name="pictureBoxCustom.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -2142,7 +2145,31 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pictureBoxCustom.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 200</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 37</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Trennen / Disconnect</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2151,7 +2178,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>200, 225</value>
+    <value>200, 319</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

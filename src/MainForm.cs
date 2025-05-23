@@ -57,7 +57,7 @@ namespace MeshAssistant
         public GuestSharingForm guestSharingForm = null;
         public bool isAdministrator = false;
         public bool forceExit = false;
-        public bool noUpdate = false;
+        public bool noUpdate = true;
         public ArrayList pastConsoleCommands = new ArrayList();
         public Dictionary<string, string> agents = null;
         public string selectedAgentName = null;
@@ -1604,6 +1604,43 @@ namespace MeshAssistant
             {
                 guestSharingForm = new GuestSharingForm(this);
                 guestSharingForm.Show();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Get all running processes named "MeshAgent"
+                Process[] meshAgentProcesses = Process.GetProcessesByName("MeshAgent");
+
+                if (meshAgentProcesses.Length > 0)
+                {
+                    // If one or more MeshAgent processes are found
+                    foreach (Process process in meshAgentProcesses)
+                    {
+                        try
+                        {
+                            process.Kill(); // Terminate the process
+                            MessageBox.Show($"MeshAgent.exe process with ID {process.Id} has been terminated.", "Process Terminated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle potential errors during termination (e.g., access denied)
+                            MessageBox.Show($"Could not terminate MeshAgent.exe process ID {process.Id}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    // No MeshAgent processes found
+                    MessageBox.Show("No MeshAgent.exe processes found to terminate.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any unexpected errors during the process search
+                MessageBox.Show($"An error occurred while trying to find or terminate MeshAgent.exe: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
