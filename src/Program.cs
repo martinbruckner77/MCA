@@ -55,6 +55,14 @@ namespace MeshAssistant
             {
                 switch (args[0].ToLower())
                 {
+                    case "startservice":
+                        try { ServiceController sc = new ServiceController("MeshCentralAssistant"); sc.Start(); }
+                        catch (Exception) { }
+                        return;
+                    case "stopservice":
+                        try { ServiceController sc = new ServiceController("MeshCentralAssistant"); sc.Stop(); }
+                        catch (Exception) { }
+                        return;
                     case "/install":
                         ManagedInstallerClass.InstallHelper(new string[] { System.Reflection.Assembly.GetExecutingAssembly().Location });
                         return;
