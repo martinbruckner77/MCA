@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿/*
+=======
+/*
+>>>>>>> 268cef91ba7a42b958d242ffd50cb5468a4f2a1f
 Copyright 2009-2022 Intel Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -59,5 +63,20 @@ namespace MeshAssistant
         {
             parent.requestHelpForm = null;
         }
+<<<<<<< HEAD
     }
 }
+=======
+
+        public void UpdateInfo()
+        {
+            mainListView.Items.Clear();
+            requestHelpButton.Visible = false;
+
+            if ((parent.mcagent != null) && (parent.currentAgentName != null) && (parent.currentAgentName.Equals("~")))
+            {
+            }
+        }
+    }
+}
+>>>>>>> 268cef91ba7a42b958d242ffd50cb5468a4f2a1f

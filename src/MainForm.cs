@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿/*
+=======
+/*
+>>>>>>> 268cef91ba7a42b958d242ffd50cb5468a4f2a1f
 Copyright 2009-2022 Intel Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -542,6 +546,7 @@ namespace MeshAssistant
                 // When not in auto-connect mode, we only connect when requesting help.
                 if (mcagent.state == 0) { stateLabel.Text = Translate.T(Properties.Resources.Disconnected); requestHelpButton.Text = Translate.T(Properties.Resources.RequestHelp); }
                 if (mcagent.state == 1) { stateLabel.Text = Translate.T(Properties.Resources.Connecting); requestHelpButton.Text = Translate.T(Properties.Resources.CancelHelpRequest); }
+<<<<<<< HEAD
                 if (mcagent.state == 2) { stateLabel.Text = Translate.T(Properties.Resources.Authenticating); requestHelpButton.Text = Translate.T(Properties.Resources.CancelHelpRequest); }
                 if (mcagent.state == 3) { stateLabel.Text = Translate.T(Properties.Resources.HelpRequested); requestHelpButton.Text = Translate.T(Properties.Resources.CancelHelpRequest); }
                 Agent_onSessionChanged();
@@ -1645,3 +1650,6 @@ namespace MeshAssistant
         }
     }
 }
+=======
+                if (mcagent.state == 2) { stateLabel.Text = Translate.T
+>>>>>>> 268cef91ba7a42b958d242ffd50cb5468a4f2a1f

@@ -60,7 +60,10 @@
             this.updateSoftwareToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBoxCustom = new System.Windows.Forms.PictureBox();
+<<<<<<< HEAD
             this.disconnect = new System.Windows.Forms.Button();
+=======
+>>>>>>> 268cef91ba7a42b958d242ffd50cb5468a4f2a1f
             this.mainContextMenuStrip.SuspendLayout();
             this.dialogContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
@@ -270,6 +273,7 @@
             this.pictureBoxCustom.Name = "pictureBoxCustom";
             this.pictureBoxCustom.TabStop = false;
             // 
+<<<<<<< HEAD
             // disconnect
             // 
             resources.ApplyResources(this.disconnect, "disconnect");
@@ -277,12 +281,17 @@
             this.disconnect.UseVisualStyleBackColor = true;
             this.disconnect.Click += new System.EventHandler(this.disconnect_Click);
             // 
+=======
+>>>>>>> 268cef91ba7a42b958d242ffd50cb5468a4f2a1f
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(79)))), ((int)(((byte)(130)))));
+<<<<<<< HEAD
             this.Controls.Add(this.disconnect);
+=======
+>>>>>>> 268cef91ba7a42b958d242ffd50cb5468a4f2a1f
             this.Controls.Add(this.remoteSessionsLabel);
             this.Controls.Add(this.requestHelpButton);
             this.Controls.Add(this.stateLabel);
@@ -334,7 +343,10 @@
         private System.Windows.Forms.ToolStripMenuItem showEventsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem updateSoftwareToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem guestSharingToolStripMenuItem;
+<<<<<<< HEAD
         private System.Windows.Forms.Button disconnect;
+=======
+>>>>>>> 268cef91ba7a42b958d242ffd50cb5468a4f2a1f
     }
 }
 

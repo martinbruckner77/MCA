@@ -179,9 +179,13 @@
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\WebSocketClient.cs" />
+<<<<<<< HEAD
     <Compile Include="src\WindowsService.cs">
       <SubType>Component</SubType>
     </Compile>
+=======
+    <Compile Include="src\WindowsService.cs" />
+>>>>>>> 268cef91ba7a42b958d242ffd50cb5468a4f2a1f
     <Compile Include="src\Win32Api.cs" />
     <EmbeddedResource Include="src\BrowserForm.resx">
       <DependentUpon>BrowserForm.cs</DependentUpon>
