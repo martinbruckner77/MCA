@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2009-2022 Intel Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -1096,34 +1096,22 @@ namespace MeshAssistant
         private void requestHelpButton_Click(object sender, EventArgs e)
         {
             Log(string.Format("requestHelpButton_Click {0}", currentAgentName));
-
-            try
-            {
-                foreach (var proc in Process.GetProcessesByName("MeshAgent"))
-                {
-                    proc.Kill();
-                    Log("MeshAgent.exe wurde beendet.");
-                }
-            }
-            catch (Exception ex)
-            {
-                Log("Fehler beim Beenden von MeshAgent.exe: " + ex.Message);
-            }
-
             if (currentAgentName.Equals("~"))
             {
                 if (autoConnect)
                 {
+                    // When in auto-connect mode, we can only request help when connected
                     if (mcagent.state != 3) return;
-
                     if (helpRequested)
                     {
+                        // Cancel help request
                         mcagent.RequestHelp(null);
                         helpRequested = false;
                         updateBuiltinAgentStatus();
                     }
                     else
                     {
+                        // No help currently requested, request it now.
                         if (requestHelpForm != null)
                         {
                             requestHelpForm.Focus();
@@ -1616,6 +1604,43 @@ namespace MeshAssistant
             {
                 guestSharingForm = new GuestSharingForm(this);
                 guestSharingForm.Show();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Get all running processes named "MeshAgent"
+                Process[] meshAgentProcesses = Process.GetProcessesByName("MeshAgent");
+
+                if (meshAgentProcesses.Length > 0)
+                {
+                    // If one or more MeshAgent processes are found
+                    foreach (Process process in meshAgentProcesses)
+                    {
+                        try
+                        {
+                            process.Kill(); // Terminate the process
+                            MessageBox.Show($"MeshAgent.exe process with ID {process.Id} has been terminated.", "Process Terminated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle potential errors during termination (e.g., access denied)
+                            MessageBox.Show($"Could not terminate MeshAgent.exe process ID {process.Id}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    // No MeshAgent processes found
+                    MessageBox.Show("No MeshAgent.exe processes found to terminate.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any unexpected errors during the process search
+                MessageBox.Show($"An error occurred while trying to find or terminate MeshAgent.exe: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
