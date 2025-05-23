@@ -64,13 +64,28 @@ namespace MeshAssistant
                 }
             }
 
-            // Check if running as service
-            if (!Environment.UserInteractive)
+            // Check if running as service or user mode
+            bool isService = !Environment.UserInteractive;
+            if (isService)
             {
                 RunningAsService = true;
                 ServiceBase[] ServicesToRun = new ServiceBase[] { new MeshService() };
                 ServiceBase.Run(ServicesToRun);
                 return;
+            }
+            else 
+            {
+                // Check if service is running
+                try
+                {
+                    ServiceController sc = new ServiceController("MeshCentralAssistant");
+                    if (sc.Status != ServiceControllerStatus.Running)
+                    {
+                        // Start the service if it's not running
+                        sc.Start();
+                    }
+                }
+                catch { }
             }
 
             // If this application is signed, get the URL of the signature, this will be used to lock this application to a server.
