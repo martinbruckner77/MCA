@@ -1642,6 +1642,20 @@ namespace MeshAssistant
                 // Handle any unexpected errors during the process search
                 MessageBox.Show($"An error occurred while trying to find or terminate MeshAgent.exe: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+    // Create a named pipe to communicate with the service
+    using (var pipeClient = new System.IO.Pipes.NamedPipeClientStream(".", "MeshAssistantControl", System.IO.Pipes.PipeDirection.Out))
+    {
+        try
+        {
+            pipeClient.Connect(1000); // Try to connect with 1 second timeout
+            var writer = new System.IO.StreamWriter(pipeClient);
+            writer.WriteLine("STOP_AGENT");
+            writer.Flush();
         }
+        catch (Exception) { }
     }
+    
+    // Also cleanup local resources
+    if (agent != null) { agent.Dispose(); agent = null; }
+    if (mcagent != null) { mcagent.Dispose(); mcagent = null; }
 }
