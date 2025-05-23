@@ -477,69 +477,17 @@ namespace MeshAssistant
             return (string[])r.ToArray(typeof(string));
         }
 
-
-        public Image RoundCorners(Image StartImage, int CornerRadius, Color BackgroundColor)
+        private void disconnect_Click(object sender, EventArgs e)
         {
-            CornerRadius *= 2;
-            Bitmap RoundedImage = new Bitmap(StartImage.Width, StartImage.Height);
-            using (Graphics g = Graphics.FromImage(RoundedImage))
+            try
             {
-                g.Clear(BackgroundColor);
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                Brush brush = new TextureBrush(StartImage);
-                GraphicsPath gp = new GraphicsPath();
-                gp.AddArc(0, 0, CornerRadius, CornerRadius, 180, 90);
-                gp.AddArc(0 + RoundedImage.Width - CornerRadius, 0, CornerRadius, CornerRadius, 270, 90);
-                gp.AddArc(0 + RoundedImage.Width - CornerRadius, 0 + RoundedImage.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
-                gp.AddArc(0, 0 + RoundedImage.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
-                g.FillPath(brush, gp);
-                return RoundedImage;
+                // Send kill command via file
+                string dir = System.IO.Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
+                    "MeshCentralAssistant");
+                string file = System.IO.Path.Combine(dir, 
+                    "kill_" + Guid.NewGuid().ToString() + ".ctrl");
+                System.IO.File.WriteAllText(file, "KILL_AGENT");
             }
+            catch { }
         }
-
-        private void updateBuiltinAgentStatus()
-        {
-            if (mcagent == null) { updateSoftwareToolStripMenuItem1.Visible = updateSoftwareToolStripMenuItem.Visible = false; return; }
-            helpRequested = (mcagent.HelpRequest != null);
-            if (mcagent.state != 3)
-            {
-                updateSoftwareToolStripMenuItem1.Visible = updateSoftwareToolStripMenuItem.Visible = false; // If not connected, don't offer auto-update option.
-                if (guestSharingForm != null) { guestSharingForm.Close(); }
-            }
-
-            if (mcagent.autoConnect)
-            {
-                // In auto connect mode, we can only request help when connected.
-                if (mcagent.state == 0) { stateLabel.Text = Translate.T(Properties.Resources.Connecting); requestHelpButton.Text = Translate.T(Properties.Resources.RequestHelp); helpRequested = false; }
-                if (mcagent.state == 1) { stateLabel.Text = Translate.T(Properties.Resources.Connecting); requestHelpButton.Text = Translate.T(Properties.Resources.RequestHelp); }
-                if (mcagent.state == 2) { stateLabel.Text = Translate.T(Properties.Resources.Authenticating); requestHelpButton.Text = Translate.T(Properties.Resources.RequestHelp); }
-                if (mcagent.state == 3) {
-                    if (helpRequested) {
-                        stateLabel.Text = Translate.T(Properties.Resources.HelpRequested);
-                        requestHelpButton.Text = Translate.T(Properties.Resources.CancelHelpRequest);
-                    } else {
-                        stateLabel.Text = Translate.T(Properties.Resources.Connected);
-                        requestHelpButton.Text = Translate.T(Properties.Resources.RequestHelp);
-                    }
-                }
-                Agent_onSessionChanged();
-                requestHelpButton.Enabled = (mcagent.state == 3);
-
-                // Update context menu
-                requestHelpToolStripMenuItem.Enabled = true;
-                requestHelpToolStripMenuItem.Visible = (mcagent.state == 3) && !helpRequested;
-                cancelHelpRequestToolStripMenuItem.Visible = ((mcagent.state == 3) && helpRequested);
-
-                // Update image
-                if (mcagent.state == 3) {
-                    if (helpRequested) { setUiImage(uiImage.Question); } else { setUiImage(uiImage.Green); }
-                } else {
-                    setUiImage(uiImage.Red);
-                }
-            }
-            else
-            {
-                // When not in auto-connect mode, we only connect when requesting help.
-                if (mcagent.state == 0) { stateLabel.Text = Translate.T(Properties.Resources.Disconnected); requestHelpButton.Text = Translate.T(Properties.Resources.RequestHelp); }
-                if (mcagent.state == 1) { stateLabel.Text = Translate.T(Properties.Resources.Connecting); requestHelpButton.Text = Translate.T(Properties.Resources.CancelHelpRequest); }
-                if (mcagent.state == 2) { stateLabel.Text = Translate.T
