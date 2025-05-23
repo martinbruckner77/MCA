@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2009-2022 Intel Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -1641,7 +1641,27 @@ namespace MeshAssistant
             {
                 // Handle any unexpected errors during the process search
                 MessageBox.Show($"An error occurred while trying to find or terminate MeshAgent.exe: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    try
+    {
+        // First disconnect the agents
+        if (agent != null) { agent.Dispose(); }
+        if (mcagent != null) { mcagent.Dispose(); }
+
+        // Try to stop service if we have permissions
+        try
+        {
+            ServiceController sc = new ServiceController("MeshCentralAssistant");
+            if (sc.Status == ServiceControllerStatus.Running)
+            {
+                sc.Stop();
             }
         }
+        catch (Exception) { } // Ignore service stop errors
+
+        Application.Exit();
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Unable to disconnect: " + ex.Message, "Disconnect Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
     }
 }
