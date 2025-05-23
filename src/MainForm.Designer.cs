@@ -60,7 +60,7 @@
             this.updateSoftwareToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBoxCustom = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.disconnect = new System.Windows.Forms.Button();
             this.mainContextMenuStrip.SuspendLayout();
             this.dialogContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
@@ -270,19 +270,19 @@
             this.pictureBoxCustom.Name = "pictureBoxCustom";
             this.pictureBoxCustom.TabStop = false;
             // 
-            // button1
+            // disconnect
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.disconnect, "disconnect");
+            this.disconnect.Name = "disconnect";
+            this.disconnect.UseVisualStyleBackColor = true;
+            this.disconnect.Click += new System.EventHandler(this.disconnect_Click);
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(79)))), ((int)(((byte)(130)))));
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.disconnect);
             this.Controls.Add(this.remoteSessionsLabel);
             this.Controls.Add(this.requestHelpButton);
             this.Controls.Add(this.stateLabel);
@@ -334,7 +334,7 @@
         private System.Windows.Forms.ToolStripMenuItem showEventsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem updateSoftwareToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem guestSharingToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button disconnect;
     }
 }
 

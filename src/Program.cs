@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2009-2022 Intel Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,9 +17,11 @@ limitations under the License.
 using System;
 using System.Collections.Specialized;
 using System.IO;
+using System.Configuration.Install;
 using System.Threading;
 using System.Web;
 using System.Windows.Forms;
+using System.ServiceProcess;
 
 namespace MeshAssistant
 {
@@ -29,6 +31,7 @@ namespace MeshAssistant
         public static readonly bool IsMainThread = true;
         public static string LockToHostname = null;
         public static string LockToServerId = null;
+        public static bool RunningAsService = false;
 
         public class CurrentAppContext : ApplicationContext
         {
@@ -47,6 +50,29 @@ namespace MeshAssistant
         [STAThread]
         static void Main(string[] args)
         {
+            // Check for service installation/uninstallation commands
+            if (args != null && args.Length > 0)
+            {
+                switch (args[0].ToLower())
+                {
+                    case "/install":
+                        ManagedInstallerClass.InstallHelper(new string[] { System.Reflection.Assembly.GetExecutingAssembly().Location });
+                        return;
+                    case "/uninstall":
+                        ManagedInstallerClass.InstallHelper(new string[] { "/u", System.Reflection.Assembly.GetExecutingAssembly().Location });
+                        return;
+                }
+            }
+
+            // Check if running as service
+            if (!Environment.UserInteractive)
+            {
+                RunningAsService = true;
+                ServiceBase[] ServicesToRun = new ServiceBase[] { new MeshService() };
+                ServiceBase.Run(ServicesToRun);
+                return;
+            }
+
             // If this application is signed, get the URL of the signature, this will be used to lock this application to a server.
             Uri signedUrl = WinCrypt.GetSignatureUrl(System.Reflection.Assembly.GetEntryAssembly().Location);
             if (signedUrl != null)

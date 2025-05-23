@@ -57,7 +57,7 @@ namespace MeshAssistant
         public GuestSharingForm guestSharingForm = null;
         public bool isAdministrator = false;
         public bool forceExit = false;
-        public bool noUpdate = true;
+        public bool noUpdate = false;
         public ArrayList pastConsoleCommands = new ArrayList();
         public Dictionary<string, string> agents = null;
         public string selectedAgentName = null;
@@ -1607,7 +1607,7 @@ namespace MeshAssistant
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void disconnect_Click(object sender, EventArgs e)
         {
             try
             {
